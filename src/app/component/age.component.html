@@ -1,0 +1,72 @@
+<section id="age-year-filter">
+    <p>Citizen Age</p>
+    <div class="row">
+        <div class="col-xs-3 col-md-2">
+            <div class="filter-block" (click)="filterByAgeRange()">
+                3,759
+                <div>below 20 yrs</div>
+            </div>
+        </div>
+        <div class="col-xs-3 col-md-2">
+
+            <div class="filter-block">
+                3,759
+                <div>below 20 yrs</div>
+            </div>
+        </div>
+        <div class="col-xs-3 col-md-2">
+
+            <div class="filter-block">
+                3,759
+                <div>below 20 yrs</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="age-table">
+    <div class="row">
+        <div class="col-xs-12">
+            below 20 yrs
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" (click)="idToggle()">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col" (click)="ageToggle()">Age</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let person of persons | orderBy: selectedDrop?.key :selectedDrop?.value; let i=index">
+                        <th scope="row">{{person.id}}</th>
+                        <td>{{person.name}}</td>
+                        <td>{{person.description}}</td>
+                        <td>{{person.age}}</td>
+                        <td>
+                            <button class="btn btn-primary" (click)="editPerson(person.id)">Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="text-center">
+                <select name="pageSize" [(ngModel)]="pageSize" (change)="displayPersons(pageSize)">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                </select>
+                <pagination [totalItems]="contentArray?.data.length" (pageChanged)="pageChanged($event)"></pagination>
+            </div>
+        </div>
+    </div>
+</section>
