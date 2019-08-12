@@ -18,7 +18,6 @@ body {
 .mar-right5 {
     margin-right: 5px;
 }
-
 .sort-icons{
     color: #ccc;
     display: inline-block;
@@ -33,6 +32,16 @@ body {
     }
 }
 .person-icon{
-    font-size: 40px;
+    font-size: 27px;
     vertical-align: middle;
+}
+.btn-primary {
+    color: #fff;
+    background-color: lightgray;
+    line-height: 14px;
+    border: none;
+    :hover {
+        background-color: grey;
+        border: none;
+    }
 }

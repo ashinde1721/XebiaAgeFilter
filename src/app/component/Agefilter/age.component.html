@@ -1,0 +1,75 @@
+<tablefilter [personsData]="contentArray" [filterbelow20Applied]="filterbelow20Applied"
+    [filter20to40Applied]="filter20to40Applied" [filter40to60Applied]="filter40to60Applied"
+    [filter60to80Applied]="filter60to80Applied" (filterclicked)="filterByAgeRange($event)">
+</tablefilter>
+
+<section id="age-table">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div *ngFor="let filter of ageRange; let i = index" class="inline-block">
+                <div class="fiter-status">
+                    <div class="filter-text">{{filter.description}}</div>
+                    <div class="close-btn" (click)="removeFilter(i)">x</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <table id="table" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" (click)="idToggle()">Id
+                            <div class="sort-icons" *ngIf="idSortEnable">
+                                <i class="fa fa-fw fa-sort-up" [ngClass]="{'active': idFilter}"> </i>
+                                <i class="fa fa-fw fa-sort-down" [ngClass]="{'active': !idFilter}"> </i>
+                            </div>
+                            <div class="sort-icons" *ngIf="!idSortEnable">
+                                <i class="fa fa-fw fa-sort active"></i>
+                            </div>
+                        </th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col" (click)="ageToggle()">Age 
+                        <div class="sort-icons" *ngIf="ageSortEnable">
+                            <i class="fa fa-fw fa-sort-up" [ngClass]="{'active': ageFilter}"> </i>
+                            <i class="fa fa-fw fa-sort-down" [ngClass]="{'active': !ageFilter}"> </i>
+                        </div>
+                        <div class="sort-icons" *ngIf="!ageSortEnable">
+                                <i class="fa fa-fw fa-sort active"></i>
+                        </div>
+                    </th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let person of persons | orderBy: selectedDrop?.key :selectedDrop?.value; let i=index">
+                        <th scope="row">{{person.id}}</th>
+                        <td><i class="fa fa-fw fa-user-circle person-icon"></i>{{person.name}}</td>
+                        <td>{{person.description}}</td>
+                        <td>{{person.age}}</td>
+                        <td>
+                            <button class="btn btn-primary" (click)="editPerson(person.id)">Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+            <div class="text-center">
+                <select name="pageSize" class="inline-block" [(ngModel)]="pageSize" (change)="displayPersons()">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                </select>
+                <span class="mar-right5"> rows visible</span>
+                <tablePagination class="display-inline-flex" [total]="personsLength" (pageChanged)="pageChanged($event)"
+                    [perPageItems]="pageSize">
+                </tablePagination>
+            </div>
+        </div>
+    </div>
+</section>

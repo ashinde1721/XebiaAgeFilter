@@ -9,7 +9,7 @@
         .activatedFilter {
           cursor: default;
           background: lightgray;  
-          border: 1px solid gray;
+          border: 1px solid grey;
         }
     }
     .filter-block {
@@ -17,12 +17,16 @@
         font-size: 14px;
     }
 }
+thead {
+    background: #cecccc;
+}
 #age-table {
    
     border: 1px solid lightgray;
     box-shadow: 1px 1px 1px 1px lightgray;
     margin-top: 10px;
     background: #fff;
+    
     .fiter-status {
         margin: 6px;
         width: 120px;
@@ -40,5 +44,10 @@
             padding: 1px;
             cursor: pointer;
         }
+    }
+}
+@media (max-width:480px) {
+    #age-table {
+        zoom: 0.8;
     }
 }

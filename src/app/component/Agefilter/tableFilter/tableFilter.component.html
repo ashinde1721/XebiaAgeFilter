@@ -1,0 +1,35 @@
+<div id="age-year-filter">
+    <div class="container-fluid">
+        <div>Citizen Age</div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                <div class="row filter-border">
+                    <div class="col-xs-3 col-md-3 right-border padd5" [ngClass]="{'activatedFilter': filterbelow20Applied}">
+                        <div class="filter-block" (click)="filterByAgeRange(0,20, 'below 20', 'filterbelow20Applied')">
+                            {{above_twenty_age}}
+                            <div>below 20 yrs</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-md-3 right-border padd5" [ngClass]="{'activatedFilter': filter20to40Applied}" (click)="filterByAgeRange(20,40, '20 to 40 yrs', 'filter20to40Applied')">
+                        <div class="filter-block">
+                            {{twenty_to_founrty_age}}
+                            <div> 20 to 40 yrs</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-md-3 right-border padd5" [ngClass]="{'activatedFilter': filter40to60Applied}" (click)="filterByAgeRange(40,60, '40 to 60 yrs', 'filter40to60Applied')">
+                        <div class="filter-block">
+                            {{fourty_to_sixty_age}}
+                            <div>40 to 60</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-md-3 padd5" [ngClass]="{'activatedFilter': filter60to80Applied}" (click)="filterByAgeRange(60,150, 'above 60 years', 'filter60to80Applied')">
+                        <div class="filter-block">
+                            {{above_sixty_age}}
+                            <div>above 60 yrs</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

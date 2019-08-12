@@ -1,0 +1,4 @@
+<pagination *ngIf="flag" class="display-inline-flex " id="ageFilterPagination" [totalItems]="total"
+    (pageChanged)="pageSwitch($event)" [itemsPerPage]="perPageItems" [boundaryLinks]="true" previousText="&lsaquo;"
+    nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+</pagination>

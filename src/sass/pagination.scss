@@ -1,0 +1,18 @@
+#ageFilterPagination {
+    .page-item {
+        .page-link {
+            border-color:grey;
+            border: none;
+        }
+        :hover {
+            border-radius: 25px;
+            background: #fff;
+        }
+    }
+    .page-item.active {
+        .page-link {
+            border-radius: 25px;
+            background: lightgray;
+        }
+    }
+}

@@ -1,5 +1,4 @@
 import { Injectable, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { persons } from '../models/person';
 

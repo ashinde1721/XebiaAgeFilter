@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AgeComponent } from './component/age.component';
+import { AgeComponent } from './component/Agefilter/age.component';
 
 
 const routes: Routes = [
