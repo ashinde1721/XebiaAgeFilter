@@ -1,51 +1,86 @@
-<section id="age-year-filter">
-    <p>Citizen Age</p>
-    <div class="row">
-        <div class="col-xs-3 col-md-2">
-            <div class="filter-block" (click)="filterByAgeRange()">
-                3,759
-                <div>below 20 yrs</div>
-            </div>
-        </div>
-        <div class="col-xs-3 col-md-2">
-
-            <div class="filter-block">
-                3,759
-                <div>below 20 yrs</div>
-            </div>
-        </div>
-        <div class="col-xs-3 col-md-2">
-
-            <div class="filter-block">
-                3,759
-                <div>below 20 yrs</div>
+<div id="age-year-filter">
+    <div class="container-fluid">
+        <div>Citizen Age</div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                <div class="row filter-border">
+                    <div class="col-xs-3 col-md-3 right-border padd5"
+                        [ngClass]="{'activatedFilter': filterbelow20Applied}">
+                        <div class="filter-block" (click)="filterByAgeRange(0,20, 'below 20', 'filterbelow20Applied')">
+                            {{above_twenty_age}}
+                            <div>below 20 yrs</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-md-3 right-border padd5"
+                        [ngClass]="{'activatedFilter': filter20to40Applied}"
+                        (click)="filterByAgeRange(20,40, '20 to 40 yrs', 'filter20to40Applied')">
+                        <div class="filter-block">
+                            {{twenty_to_founrty_age}}
+                            <div> 20 to 40 yrs</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-md-3 right-border padd5"
+                        [ngClass]="{'activatedFilter': filter40to60Applied}"
+                        (click)="filterByAgeRange(40,60, '40 to 60 yrs', 'filter40to60Applied')">
+                        <div class="filter-block">
+                            {{fourty_to_sixty_age}}
+                            <div>40 to 60</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-md-3 padd5" [ngClass]="{'activatedFilter': filter60to80Applied}"
+                        (click)="filterByAgeRange(60,150, 'above 60 years', 'filter60to80Applied')">
+                        <div class="filter-block">
+                            {{above_sixty_age}}
+                            <div>above 60 yrs</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 
 <section id="age-table">
     <div class="row">
-        <div class="col-xs-12">
-            below 20 yrs
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div *ngFor="let filter of ageRange; let i = index" class="inline-block">
+                <div class="fiter-status">
+                    <div class="filter-text">{{filter.description}}</div>
+                    <div class="close-btn" (click)="removeFilter(i)">x</div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12">
-            <table class="table">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <table id="table" class="table">
                 <thead>
                     <tr>
-                        <th scope="col" (click)="idToggle()">Id</th>
+                        <th scope="col" (click)="idToggle()">
+                            Id
+                            <div class="sort-icons">
+                                <i class="fa fa-fw fa-sort-up" [ngClass]="{'active': idFilter}"> </i>
+                                <i class="fa fa-fw fa-sort-down" [ngClass]="{'active': !idFilter}"> </i>
+                            </div>
+                        </th>
                         <th scope="col">Name</th>
                         <th scope="col">Description</th>
-                        <th scope="col" (click)="ageToggle()">Age</th>
+                        <th scope="col" (click)="ageToggle()">Age
+                            <div class="sort-icons">
+                                <i class="fa fa-fw fa-sort-up" [ngClass]="{'active': ageFilter}"> </i>
+                                <i class="fa fa-fw fa-sort-down" [ngClass]="{'active': !ageFilter}"> </i>
+                            </div>
+                        </th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let person of persons | orderBy: selectedDrop?.key :selectedDrop?.value; let i=index">
                         <th scope="row">{{person.id}}</th>
-                        <td>{{person.name}}</td>
+                        <td>
+                            <i class="fa fa-fw fa-user-circle person-icon"></i>
+                            {{person.name}}
+                        </td>
                         <td>{{person.description}}</td>
                         <td>{{person.age}}</td>
                         <td>
@@ -57,15 +92,18 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-12 col-md-12">
             <div class="text-center">
-                <select name="pageSize" [(ngModel)]="pageSize" (change)="displayPersons(pageSize)">
+                <select name="pageSize" class="inline-block" [(ngModel)]="pageSize" (change)="displayPersons()">
                     <option value="10">10</option>
                     <option value="20">20</option>
                     <option value="30">30</option>
                     <option value="40">40</option>
                 </select>
-                <pagination [totalItems]="contentArray?.data.length" (pageChanged)="pageChanged($event)"></pagination>
+                <span class="mar-right5"> rows visible</span>
+                <tablePagination class="display-inline-flex" [total]="personsLength" (pageChanged)="pageChanged($event)"
+                    [perPageItems]="pageSize">
+                </tablePagination>
             </div>
         </div>
     </div>

@@ -1,0 +1,38 @@
+body {
+    background:#f7f6f6;
+    margin: 0;
+    padding: 0;
+}
+.right-border {
+    border-right: 1px solid lightgray;
+}
+.padd5 {
+    padding: 5px;
+}
+.inline-block {
+    display: inline-block;
+}
+.display-inline-flex {
+    display: inline-flex;
+}
+.mar-right5 {
+    margin-right: 5px;
+}
+
+.sort-icons{
+    color: #ccc;
+    display: inline-block;
+    position: relative;
+    .active{
+        color: #000;
+    }
+    .fa-sort-down{
+        position: absolute;
+        left: 0;
+        top: 5px;
+    }
+}
+.person-icon{
+    font-size: 40px;
+    vertical-align: middle;
+}

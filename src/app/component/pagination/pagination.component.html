@@ -1,0 +1,5 @@
+<pagination *ngIf="flag" class="display-inline-flex" 
+    [totalItems]="total" 
+    (pageChanged)="pageSwitch($event)" 
+    [itemsPerPage]="perPageItems">
+</pagination>

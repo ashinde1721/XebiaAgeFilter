@@ -1,0 +1,44 @@
+#age-year-filter {
+    .filter-border {
+        background: #fff;
+        border-radius: 10px;
+        cursor: pointer;
+        :hover {
+            background: lightgray;
+        }
+        .activatedFilter {
+          cursor: default;
+          background: lightgray;  
+          border: 1px solid gray;
+        }
+    }
+    .filter-block {
+        text-align: center;
+        font-size: 14px;
+    }
+}
+#age-table {
+   
+    border: 1px solid lightgray;
+    box-shadow: 1px 1px 1px 1px lightgray;
+    margin-top: 10px;
+    background: #fff;
+    .fiter-status {
+        margin: 6px;
+        width: 120px;
+        background: lightgray;
+        .filter-text {
+            display: inline-block;
+            font-size: 14px;
+            padding: 3px;
+        }
+        .close-btn {
+            float: right;
+            width: 17px;
+            text-align: center;
+            background: grey;
+            padding: 1px;
+            cursor: pointer;
+        }
+    }
+}
